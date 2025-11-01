@@ -136,7 +136,7 @@ emp1.apply_bonus(20) """
 
 # Temperature Converter
 
-class Temperature:
+""" class Temperature:
     def __init__(self,temperature,unit):
         self.temperature = temperature
         self.unit = unit
@@ -169,4 +169,174 @@ tem1.display_in_fahreheit()
 
 tem2 = Temperature(98,"F")
 tem2.display_in_celsius()
-tem2.display_in_fahreheit()
+tem2.display_in_fahreheit() """
+
+
+# LEVEL III
+# Library System (Multiple Objects Interaction)
+
+""" class Book:
+    def __init__(self,title,author):
+        self.title = title
+        self.author = author
+    def __str__(self):
+        return f"'{self.title}' by {self.author}"
+class Library:
+    def __init__(self):
+        self.books = {}
+    def add_book(self, book): #book --> book object is passed
+        if book.title in self.books:
+            print(f"Books exists in library.")
+            return
+        self.books[book.title] = book
+        print(f"Added book: {book}")
+
+    def remove_book(self, title):
+        if title in self.books:
+            removed_book = self.books.pop(title)
+            print(f"Removed book: {removed_book}")
+        else:
+            print(f"Book titled '{title}' not found in the library.")
+
+    def display_books(self):
+        if not self.books:
+            print("The library is empty.")
+            return
+        for title, book in self.books.items():
+            print(f"- {book}")
+        
+my_library = Library()
+
+book1 = Book("Thousand Splendid Suns","Khaled")
+book2 = Book("Palace of Illusions","Chitra Banerjee")
+book3 = Book("Ramayana","Valmiki")
+my_library.add_book(book1)
+my_library.add_book(book2)
+my_library.add_book(book3)
+
+my_library.remove_book("Palace of Illusions")
+
+my_library.display_books() """
+
+#Order Management
+""" class Item:
+    def __init__(self,name,price,qty):
+        self.name = name
+        self.price = price
+        self.qty = qty
+class Order:
+    def __init__(self):
+        self.cart_items = {}
+    def add_item(self,cart_item):
+        self.cart_items[cart_item.name] = [cart_item.price,cart_item.qty]
+        print(f"Added {cart_item.name} to cart successfully!")
+    def remove_item(self,name):
+        if name not in self.cart_items:
+            print("Item you are trying to remove doesnt exist in cart. Invalid request!")
+        else:
+            if self.cart_items[name][1] == 1:
+                self.cart_items.pop(name)
+            else:
+                self.cart_items[name][1] -= 1
+        print(f"Removed {name} from cart successfully!")
+    def display_order(self):
+        print()
+        print("Order:")
+        total_bill = 0
+        for name,data in self.cart_items.items():
+            print(f"Name: {name}")
+            print(f"Quantity: {data[1]}")
+            print(f"Price: {data[1]}*{data[0]}={data[1]*data[0]}")
+            total_bill += data[1]*data[0]
+        print("-"*50)
+        print(f"Order Value: {total_bill}")
+        print("-"*50)
+        
+item1 = Item("phone",99000,1)
+item2 = Item("watch",7000,2)
+item3 = Item("pen",5,100)
+
+order = Order()
+
+order.add_item(item1)
+order.add_item(item2)
+order.add_item(item3)
+order.display_order()
+
+order.remove_item("phone")
+order.display_order()
+ """
+
+# Student Report
+
+""" class Student:
+    def __init__(self,name,marks_list):
+        self.name = name
+        self.marks_list = marks_list
+    def average(self):
+        avg = sum(self.marks_list)/len(self.marks_list)
+        return avg
+    def result(self):
+        res = self.average()
+        for marks in self.marks_list:
+            if marks<40:
+                return "Fail"
+        if res>=80:
+            return "Distinction"
+        else:
+            return "Pass"
+    def display_result(self):
+        print("Report:")
+        print(f"Name: {self.name}")
+        print(f"Average: {self.average()}")
+        print(f"Result: {self.result()}")
+        print("-"*50)
+            
+student1 = Student("Prajwala",[99,88,88,66,88])
+student2 = Student("xyz",[88,77,55,100,66])
+student3 = Student("Trump",[11,11,55,100,20])
+
+student1.display_result()
+student2.display_result()
+student3.display_result() """
+
+# ATM Simulation
+
+""" class ATM:
+
+    users = {
+        "101":{"pin":1122,"balance":0},
+        "102":{"pin":3456,"balance":0},
+        "103":{"pin":9898,"balance":0}
+    }
+    def login(self,account_number,pin):
+        if account_number in self.users and self.users[account_number]["pin"] == pin:
+            print("Login successful!")
+            return account_number
+        print("Invalid login. Please check your account number and pin.")
+        
+    def deposit(self,acc_no,amount):
+        self.users[acc_no]["balance"] += amount
+        print(f"Amount added successfully!")
+        print(f"Your current balance: {self.users[acc_no]["balance"]}")
+
+    def withdraw(self,acc_no,amount):
+        self.users[acc_no]["balance"] -= amount
+        print(f"Amount withdrawed successfully!")
+        print(f"Your current balance: {self.users[acc_no]["balance"]}")
+
+    def check_balance(self,acc_no):
+        print(f"Current balance: {self.users[acc_no]["balance"]}")
+
+user1 = ATM()
+user2 = ATM()
+
+user1.login("101",1122)
+user1.check_balance("101")
+user1.deposit("101",10000)
+user1.withdraw("101",99)
+print("-"*50)
+user2.login("102",3456)
+user1.check_balance("102")
+user1.deposit("102",10000)
+user1.withdraw("102",99) """
