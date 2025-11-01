@@ -1,4 +1,5 @@
-def read_marks(filename):
+# Question-1
+""" def read_marks(filename):
     marks = {}
     with open(filename, 'r') as file:
         for line in file:
@@ -41,3 +42,45 @@ def write_report(report, filename):
 marks = read_marks('marks.txt') # marks = {rollno:{name:'',scores:{subjname:''}}}
 report = calculate_marks(marks)
 write_report(report, 'report.txt')
+ """
+
+# Question-2
+
+import csv
+from datetime import datetime
+
+def calculate_expenses(file_name):
+    total_expense = 0
+    category_expense = {}
+    daily_expense = {}
+
+    with open(file_name, 'r') as file:
+        reader = csv.reader(file)
+        headers = next(reader)  # Skip the header row
+        for row in reader:
+            date = row[0]
+            category = row[1]
+            amount = float(row[2])
+
+            total_expense += amount
+            category_expense[category] = category_expense.get(category, 0) + amount
+            daily_expense[date] = daily_expense.get(date, 0) + amount
+
+    return total_expense, category_expense, daily_expense
+
+def write_summary(total_expense, category_expense, daily_expense):
+    highest_spending_day = max(daily_expense, key=daily_expense.get)
+    month = datetime.strptime(highest_spending_day, '%Y-%m-%d').strftime('%B')
+    year = datetime.strptime(highest_spending_day, '%Y-%m-%d').year
+
+    with open('monthly_summary.txt', 'w', encoding='utf-8') as file:
+        file.write(f"================= Expense Summary ({month} {year}) =================\n")
+        file.write(f"Total Monthly Expense: ₹{total_expense:.2f}\n")
+        file.write("Category-wise Breakdown:\n")
+        for category, amount in category_expense.items():
+            file.write(f"  {category} : ₹{amount:.2f}\n")
+        file.write(f"Highest Spending Day: {highest_spending_day} (₹{daily_expense[highest_spending_day]:.2f})\n")
+
+# Driver code
+total_expense, category_expense, daily_expense = calculate_expenses('expenses.csv')
+write_summary(total_expense, category_expense, daily_expense)
