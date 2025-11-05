@@ -1,0 +1,4 @@
+2025-11-05 19:51:45.293849 - Function 'add_expense' executed in 34.701951s
+2025-11-05 19:52:26.481878 - Function 'view_expenses' executed in 0.03561s
+2025-11-05 19:56:12.601315 - Function 'view_expenses' executed in 0.001779s
+2025-11-05 19:56:20.414003 - Function 'monthly_summary' executed in 10.712625s
