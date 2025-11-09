@@ -1,9 +1,7 @@
 import json
 import datetime
-from functools import wraps
 
 def log_and_time(func):
-    @wraps(func) # wraps contains the metadata like __name__ of the func
     def wrapper():
         start_time = datetime.datetime.now()
         print(f"Function '{func.__name__}' started at {start_time}")
@@ -29,6 +27,12 @@ def add_expense():
     date = input("Enter date (YYYY-MM-DD) or press Enter for today: ")
     if not date: # if date is not given by user it considers today as date
         date = datetime.date.today().isoformat() # date is considered in iso format (yyyy-mm-dd)
+    else:
+        try:
+            datetime.datetime.strptime(date, '%Y-%m-%d')
+        except ValueError:
+            print("Please enter date in valid format!")
+            return
     category = input("Enter category: ")
     amount = float(input("Enter amount: "))
     description = input("Enter description: ")
@@ -72,7 +76,13 @@ def monthly_summary():
         print("No expenses recorded yet.")
         return
     
+
     month = int(input("Enter month (MM): "))
+    # validating month
+    if month<1 or month>12:
+        print("Please enter valid month.")
+        return
+    
     year = int(input("Enter year (YYYY): "))
     monthly_expenses = []
     for expense in expenses:
@@ -81,6 +91,9 @@ def monthly_summary():
         # takes 2 args - string that represents date and pattern
         if dt.month == month and dt.year == year:
             monthly_expenses.append(expense)
+    if not monthly_expenses:
+        print("No records found for the given month and year.")
+        return
     summary = {}
     for expense in monthly_expenses:
         category = expense['category']

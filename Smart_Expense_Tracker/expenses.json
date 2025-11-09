@@ -4,5 +4,11 @@
         "category": "food",
         "amount": 200.0,
         "description": "shawarma at subway"
+    },
+    {
+        "date": "2025-11-09",
+        "category": "travel",
+        "amount": 700000.0,
+        "description": "Kerala"
     }
 ]
