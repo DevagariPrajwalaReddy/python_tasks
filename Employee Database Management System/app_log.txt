@@ -1,0 +1,12 @@
+2025-11-12 15:57:21.908185 - Function 'create_employee_table' executed in 0.008549s
+2025-11-12 15:57:41.273272 - Function 'delete_employee' executed in 0.021344s
+2025-11-12 15:57:46.243007 - Function 'fetch_employees' executed in 0.001007s
+2025-11-12 15:57:56.623729 - Function 'fetch_employees' executed in 0.001096s
+2025-11-12 15:58:45.881902 - Function 'create_employee_table' executed in 0.001863s
+2025-11-12 15:58:50.348501 - Function 'fetch_employees' executed in 0.00123s
+2025-11-12 16:01:13.888880 - Function 'create_employee_table' executed in 0.001589s
+2025-11-12 16:01:16.145308 - Function 'fetch_employees' executed in 0.001579s
+2025-11-12 16:06:33.708124 - Function 'create_employee_table' executed in 0.001261s
+2025-11-12 16:06:37.207269 - Function 'fetch_employees' executed in 0.00179s
+2025-11-12 16:09:34.690714 - Function 'create_employee_table' executed in 0.001576s
+2025-11-12 16:09:37.429555 - Function 'fetch_employees' executed in 0.002004s
