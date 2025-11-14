@@ -1,0 +1,9 @@
+Total Valid Employees: 3
+Average Ratings by Department:
+ Sales: 4.50
+ HR: 3.80
+Finance: 4.90
+Top Performer:
+Employee Name:  Arjun Patel
+Department: Finance
+Rating: 4.9
